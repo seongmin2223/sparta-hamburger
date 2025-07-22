@@ -62,8 +62,6 @@ public class Kiosk {
 
     private void handleCategorySelection(Menu category) {
         category.displayMenuItems();
-
-        // 메뉴 아이템 리스트가 비어있으면 (준비되지 않은 메뉴라면)
         if (category.getMenuItems().isEmpty()) {
             System.out.println();
             return;
@@ -78,7 +76,6 @@ public class Kiosk {
 
         if (itemChoice > 0 && itemChoice <= category.getMenuItems().size()) {
             MenuItem selectedItem = category.getMenuItems().get(itemChoice - 1);
-            // 여기도 println으로 변경
             System.out.println("\n선택한 메뉴: " + selectedItem.getName() + " | W " + selectedItem.getPrice() + " | " + selectedItem.getDescription());
         } else {
             System.out.println("잘못된 입력입니다. 다시 선택해주세요.");
