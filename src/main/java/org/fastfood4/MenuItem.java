@@ -12,7 +12,6 @@ public class MenuItem {
         this.price = price;
     }
 
-    // 필드 값에 접근하기 위한 Getter 메소드들
     public String getName() {
         return name;
     }

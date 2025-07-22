@@ -4,15 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
-    private String categoryName; // 메뉴 카테고리 이름 (예: "Burgers", "Drinks")
-    private List<MenuItem> menuItems; // 이 카테고리에 속하는 MenuItem 객체들을 관리하는 리스트
+    private String categoryName;
+    private List<MenuItem> menuItems;
 
-    // 생성자: 메뉴 카테고리 이름을 받아 초기화하고, 해당 카테고리의 MenuItem들을 바로 추가합니다.
     public Menu(String categoryName) throws Exception {
         this.categoryName = categoryName;
-        this.menuItems = new ArrayList<>(); // MenuItem 리스트 초기화
+        this.menuItems = new ArrayList<>();
 
-        // 생성자 내부에서 카테고리에 따라 다른 MenuItem들을 추가합니다.
         switch (categoryName) {
             case "Burgers":
                 menuItems.add(new MenuItem("ShackBurger", "6.9", "토마토, 양상추, 쉑소스가 토핑된 치즈버거"));
@@ -28,20 +26,16 @@ public class Menu {
         }
     }
 
-    // 메뉴 카테고리 이름을 반환하는 메서드
     public String getCategoryName() {
         return categoryName;
     }
 
-    // 이 카테고리의 MenuItem 리스트를 반환하는 메서드
     public List<MenuItem> getMenuItems() {
         return menuItems;
     }
 
     public void displayMenuItems() {
-        System.out.println("\n[ " + categoryName + " MENU ]\n"); // [ BURGERS MENU ]
-
-        // menuItems 리스트가 비어있으면 준비되지 않은 메뉴 메시지를 출력합니다.
+        System.out.println("\n[ " + categoryName + " MENU ]\n");
         if (menuItems.isEmpty()) {
             System.out.println("해당 메뉴는 아직 준비되지 않았어요.");
         } else {
