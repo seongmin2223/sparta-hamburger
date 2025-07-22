@@ -15,7 +15,7 @@ public class Kiosk {
 
     public void start() throws Exception {
         while (true) {
-            System.out.print("아래메뉴중 하나의 번호를 입력해주세요");
+            System.out.print("아래메뉴중 하나의 번호를 입력해주세요\n");
             System.out.println("[ SHAKESHACK MENU ]");
 
             for (int i = 0; i < menuItems.size(); i++) {
@@ -46,7 +46,7 @@ public class Kiosk {
                 System.out.println("이름: " + selectedItem.getName());
                 System.out.println("가격: W " + selectedItem.getPrice());
                 System.out.println("설명: " + selectedItem.getDescription());
-                System.out.println("--------------------");
+                System.out.println("--------------------\n");
             } else {
                 throw new Exception("존재하지않는 번호입니다. \n");
             }
