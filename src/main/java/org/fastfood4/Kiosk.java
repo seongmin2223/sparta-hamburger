@@ -51,29 +51,34 @@ public class Kiosk {
     }
 
     private int getUserInput() {
-        while (!scanner.hasNextInt()) {
-            System.out.println("숫자를 입력해주세요.");
-            System.out.print("선택: ");
+        int input = -1;
+        boolean isValidInput = false;
+
+        while (!isValidInput) { // 유효한 입력이 들어올 때까지 반복
+            String line = scanner.nextLine(); // 사용자 입력을 한 줄 전체(문자열)로 읽어옴
+
+            try {
+                input = Integer.parseInt(line); // 읽어온 문자열을 정수로 변환 시도
+                isValidInput = true; // 변환 성공 시 유효한 입력으로 간주
+            } catch (NumberFormatException e) {
+                // 숫자로 변환할 수 없는 문자열(예: "abc", "안녕")이 들어오면 이 블록 실행
+                System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
+                // isValidInput은 여전히 false이므로, 루프가 다시 시작되어 재입력 요청
+            }
         }
-        int input = scanner.nextInt();
-        scanner.nextLine();
-        return input;
+        return input; // 유효한 숫자 입력 반환
     }
 
     private void handleCategorySelection(Menu category) {
         category.displayMenuItems();
         if (category.getMenuItems().isEmpty()) {
-            System.out.println();
             return;
         }
-
         System.out.print("선택: ");
         int itemChoice = getUserInput();
-
         if (itemChoice == 0) {
             return;
         }
-
         if (itemChoice > 0 && itemChoice <= category.getMenuItems().size()) {
             MenuItem selectedItem = category.getMenuItems().get(itemChoice - 1);
             System.out.println("\n선택한 메뉴: " + selectedItem.getName() + " | W " + selectedItem.getPrice() + " | " + selectedItem.getDescription());

@@ -44,6 +44,5 @@ public class Menu {
                 System.out.println((i + 1) + ". " + item.getName() + " | W " + item.getPrice() + " | " + item.getDescription());
             }
         }
-        System.out.println("0. 뒤로가기");
     }
 }
